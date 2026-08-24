@@ -6,6 +6,10 @@ El flujo del proyecto no genera solo un resumen. Cada consulta semanal deja un b
 
 ## Inicio rápido
 
+El proyecto requiere Python `>=3.11` (incluido Python 3.13). Puedes usar Conda o un entorno virtual estándar de Python.
+
+### Opción A: Conda
+
 Activar el entorno y validar conectividad:
 
 ```bash
@@ -14,6 +18,31 @@ conda activate MyFitnessTracker
 cd ~/Documents/GitHub/MyFitnessTracker
 python intro.py
 ```
+
+### Opción B: Python sin Conda
+
+Desde la raíz del clon, crea y activa un entorno virtual, instala el proyecto y ejecuta la prueba de conectividad:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+python intro.py
+```
+
+En Windows PowerShell, activa el entorno con:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+`python -m pip install -e .` instala el proyecto en modo editable y resuelve sus dependencias automáticamente. Las dependencias de ejecución declaradas son:
+
+- `garminconnect==0.3.3`: autenticación y consultas a Garmin Connect.
+- `pandas>=2.2`: normalización y exportación de datos tabulares.
+- `matplotlib>=3.9`: generación de figuras de análisis.
+- `setuptools>=68`: backend de construcción usado al instalar el paquete.
 
 `intro.py` autentica contra Garmin Connect, reutiliza o crea `secrets/garmin_tokens.json` y confirma que el proyecto puede leer configuración y credenciales.
 
